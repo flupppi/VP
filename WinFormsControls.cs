@@ -5,8 +5,79 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
 
+// namespace contains our form to display hidden text
+namespace LabelTextBoxButtonTest{
+    
+/// <summary>
+/// form that creates a password textbox and a a label to display textbox contents
+/// </summary>
 public class WinFormsControls : System.Windows.Forms.Form
 {
+    private System.Windows.Forms.Button displayPasswordButton;
+    private System.Windows.Forms.Label displayPasswordLabel;
+    private System.Windows.Forms.TextBox inputPasswordTextBox;
+
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.Contatiner components = null;
+    public WinFormsControls(){
+        InitializeComponent();
+    }
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (components != null)
+            {
+                components.Dispose();
+            }
+        }
+        base.Dispose(disposing);
+    }
+
+    #region Windows Form Designer generated code
+    /// <summary>
+    /// Required for Designer support - do not modify the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent(){
+        this.displayPasswordButton = new System.Windows.Forms.Button();
+        this.inputPasswordTextBox = new System.Windows.Forms.TextBox();
+        this.displayPasswordLabel = new System.Windows.Forms.Label();
+        this.suspendLayout();
+
+        // displayPasswordButton
+        this.displayPasswordButton.Location= new System.Drawing.Point(96,96);
+        this.displayPasswordButton.Name = "displayPasswordButton";
+        this.displayPasswordButton.TabIndex = 1;
+        this.displayPasswordButton.Text = "Show Me";
+        this.displayPasswordButton.Click += new System.EventHandler( this.displayPasswordButton_Click);
+
+
+        // Initialize inputPasswordTextBox
+
+        // initialize displayPasswordLabel
+
+        // Initialize the Windows form itself
+        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        this.ClientSize = new System.Drawing.Size(292, 133);
+        this.Controls.AddRange(
+            new System.Windows.Forms.Control[]{
+                this.displayPasswordLabel,
+                this.inputPasswordTextBox,
+                this.displayPasswordButton
+            }
+        );
+        this.Name = "LabelTextBoxButtonTest";
+        this.Text = "LabelTextBoxButtonTest";
+        this.resumeLayout(false);
+    }
+    #endregion
+
 
     // display label
     private System.Windows.Forms.Label displayLabel;
@@ -55,6 +126,17 @@ public class WinFormsControls : System.Windows.Forms.Form
     private System.Windows.Forms.Button clearButton;
     private System.Windows.Forms.Button exitButton;
 
+    // Group Box Example
+    private System.Windows.Forms.Button hiButton;
+    private System.Windows.Forms.Button byeButton;
+    private System.Windows.Forms.Button leftButton;
+    private System.Windows.Forms.Button rightButton;
+    private System.Windows.Forms.GroupBox mainGroupBox;
+    private System.Windows.Forms.Label messageLabel;
+    private System.Windows.Forms.Panel mainPanel;
+
+
+
     [STAThread]
     static void Main()
     {
@@ -63,6 +145,31 @@ public class WinFormsControls : System.Windows.Forms.Form
             );
     }
 
+    private void byeButton_Click(object sender, System.EventArgs e)
+    {
+        messageLabel.Text = "Bye pressed";
+    }
+
+    private void leftButton_Click(object sender, System.EventArgs e)
+    {
+        messageLabel.Text = "Far left pressed";
+    }
+
+    private void rightButton_Click( object sender, System.EventArgs e)
+    {
+        messageLabel.Text = "Far right pressed";
+
+    }
+
+    // display user input on label
+    protected void displayPasswordButton_Click(object sender, System.EventArgs e)   
+    {
+        // text has not changed
+        displayPasswordLabel.Text = inputPasswordTextBox.Text;
+
+        
+
+    }
     // get selected index, draw shape
     // Die combobox wurde imageComboBox benanntd und hat ein Event Selected Index Changed
     // Die Methode ist Standard für eine Combobox da diese ohne keine funktionalität hätte.
@@ -277,4 +384,5 @@ public class WinFormsControls : System.Windows.Forms.Form
 
 
 
+}
 }
